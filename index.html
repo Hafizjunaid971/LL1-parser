@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-V57MF89MNH"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-V57MF89MNH');
+	</script>
+
+	<meta name="google-site-verification" content="49lePZ-Gpbr9ukYW-BrUPMYGp2MYe0Guiu5XiN1CobE" />
+
+	<script src="firstfollow.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+
+ 
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="./assets/favicon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+	<meta property="og:url" content="https://dusanstanojeviccs.github.io/first-follow-solver">
+	<meta property="og:title" content="First and Follow set Solver">
+	<meta property="og:description" content="Easiest ll1 grammar calculator. Tool for calculating First and Follow sets for ll1 grammar. Improve your Lexer and Parser. Test the First and Follow set library from the comfort of your browser!">
+	
+	<meta name="description" content="Tool for calculating First and Follow sets">
+	
+	<title>First and Follow set Solver - Grammar Solver</title>
+
+
+	<!--		 Fonts and icons		 -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+	<!-- Nucleo Icons -->
+	<link href="./assets/css/nucleo-icons.css" rel="stylesheet" />
+	<link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
+	<!-- Font Awesome Icons -->
+	<link href="./assets/css/font-awesome.css" rel="stylesheet" />
+	<link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
+	<!-- CSS Files -->
+	<link href="./assets/css/argon-design-system.css?v=1.2.2" rel="stylesheet" />
+
+	<style type="text/css">
+		.section.section-hero.section-shaped {
+			margin-top: -440px;
+		}
+		.form-control {
+			color: #32325d !important;
+		}
+		.symbol {
+			border-radius: 6px;
+			background: #fcd371c2;
+			padding: 2px 7px 5px 7px;
+			margin-left: 5px;
+			margin-bottom: 4px;
+			vertical-align: middle;
+		}
+		.alert.alert-danger {
+			background-color: #f5345a;
+		}
+	</style>
+
+	<meta name="robots" content="index, follow" />
+
+
+</head>
+<body>
+	<div class="wrapper">
+		<div class="section section-hero section-shaped">
+		
+			
+			<div class="separator separator-bottom separator-skew zindex-100">
+				<svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+					<polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+				</svg>
+			</div>
+		</div>
+		<div class="section features-6 pt-3">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 mx-auto text-center">
+						<h1 class="display-3">
+							<span class="fa fa-lightbulb d-inline pr-2"></span>
+							First and Follow set Solver By Hafiz Junaid Ahmed And All of group members
+						</h1>
+						<h2 class="lead">Run the First and Follow set the given program to find out first and follow!</h2>
+					</div>
+				</div>
+
+				<div class="row align-items-center">
+					<div class="col-lg-12">
+						<div class="info info-horizontal info-hover-primary">
+						
+						</div>
+					</div>
+				</div>
+
+				<div id="app" class="mt-6">
+
+					<div class="row">
+						<div class="col-12">
+							<textarea v-model="enteredValue" class="form-control"  oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' rows="10" style="resize: none;">
+							</textarea>
+						</div>
+					</div>
+
+					<div class="row mt-4 text-center">
+						<div class="col-12">
+							<span class="custom-radio mb-3 mr-4">
+								<input class="custom-control-input" id="lowercaseRadio" value="lowercase" type="radio" v-model="mode">
+								<label class="custom-control-label" for="lowercaseRadio">
+									<span>Terminals contain lowercase</span>
+								</label>
+							</span>
+
+							
+						</div>
+					</div>
+
+					<div class="row mt-3">
+						<div class="col-lg-3 col-md-12">
+							<div class="form-group">
+								<label>Epsilon Symbol</label>
+								<input type="text" v-model="epsilon" class="form-control">
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-12">
+							<div class="form-group">
+								<label>End of File</label>
+								<input type="text" v-model="eof" class="form-control">
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-12">
+							<div class="form-group">
+								<label>Start Symbol</label>
+								<input type="text" v-model="start" class="form-control">
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-12">
+							<div class="form-group">
+								<label>Split Symbol</label>
+								<input type="text" v-model="split" class="form-control">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-lg-3 col-md-12">
+							<button v-on:click="solve" class="btn btn-info btn-block">Solve</button>
+						</div>
+					</div>
+
+					<div class="mt-4 alert alert-danger" v-if="error.length">
+						{{error}}
+					</div>
+
+					<div v-else>
+						<div class="card mt-4" v-if="terminals.length">
+							<div class="card-body">
+								<h4>Terminals</h4>
+								<div v-for="value in terminals" class="symbol d-inline-block">{{value}}</div>
+							</div>
+						</div>
+
+						<div class="card mt-4" v-if="firstSetToShow.length">
+							<div class="card-body">
+								<h4>First Set</h4>
+
+								<div v-for="line in firstSetToShow" class="mb-2">
+									<h5 class="d-inline">{{line.key}}</h5>
+
+									<div v-for="value in line.values" class="symbol d-inline-block">{{value}}</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="card mt-4" v-if="followSetToShow.length">
+							<div class="card-body">
+								<h4>Follow Set</h4>
+
+								<div v-for="line in followSetToShow" class="mb-2">
+									<h5 class="d-inline">{{line.key}}</h5>
+
+									<div v-for="value in line.values" class="symbol d-inline-block">{{value}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<br /><br />
+		<footer class="footer">
+			<div class="container">
+				<div class="row row-grid align-items-center mb-5">
+					<div class="col-lg-6">
+						<h3 class="text-primary font-weight-light mb-2">This My Compiler Construction project!</h3>
+						<h4 class="mb-0 font-weight-light">LL1 Parser In This project to define First and follow /Terminals.</h4>
+					</div>
+					<div class="col-lg-6 text-lg-center btn-wrapper">
+						<a target="_blank" href="https://www.facebook.com/hafizjunaid971" rel="nofollow" class="btn btn-icon-only btn-dribbble rounded-circle" data-toggle="tooltip" data-original-title="Add me on">
+							<span class="btn-inner--icon"><i class="fa fa-facebook"></i></span>
+						</a>
+						<a target="_blank" href="https://www.linkedin.com/in/hafiz-junaid-118984a0/" rel="nofollow" class="btn btn-icon-only btn-dribbble rounded-circle" data-toggle="tooltip" data-original-title="Add me on">
+							<span class="btn-inner--icon"><i class="fa fa-linkedin"></i></span>
+						</a>
+						<a target="_blank" href="https://twitter.com/hafizjunaid971" rel="nofollow" class="btn btn-icon-only btn-dribbble rounded-circle" data-toggle="tooltip" data-original-title="Add me on">
+							<span class="btn-inner--icon"><i class="fa fa-twitter"></i></span>
+						</a>
+						<a target="_blank" href="https://github.com/Hafizjunaid971" rel="nofollow" class="btn btn-icon-only btn-dribbble rounded-circle" data-toggle="tooltip" data-original-title="Add me on">
+							<span class="btn-inner--icon"><i class="fa fa-github"></i></span>
+						</a>
+					</div>
+				</div>
+				<hr>
+				<div class="row align-items-center justify-content-md-between">
+					<div class="col-md-12">
+						<div class="copyright">
+	<h4 style="text-align: center;font-family:Times New Roman, Times, serif;  ">Copyright ©2020 All rights reserved | Hafiz Junaid Ahmed</h4>
+						</div>
+					</div>
+			</div>
+		</footer>
+	</div>
+
+	<script type="text/javascript">
+
+		function prepareToShow(obj) {
+			let arr = [];
+
+			for (let key in obj) {
+				arr.push({
+					key: key,
+					values: obj[key]
+				});
+			}
+
+			return arr;
+		}
+
+		var app = new Vue({
+			el: "#app",
+			data: {
+				error: "",
+				enteredValue: 
+					"S -> a B D h\n" +
+					"B -> c C\n" +
+					"C -> b C\n" +
+					"D -> E F\n" +
+					"E -> g | ε \n" +
+					"F -> f | ε\n",
+				terminals: [],
+				mode: "lowercase",
+				epsilon: "ε",
+				eof: "$",
+				start: "S",
+				split: "|",
+
+				firstSet: {},
+				followSet: {},
+				
+
+				
+				firstSetToShow: [],
+				followSetToShow: [],
+			},
+			methods: {
+				solve: function () {
+					this.error = "";
+
+					try {
+						let rules = FirstFollowSolver.parseProgram(this.enteredValue, this.split);
+
+						let terminals = FirstFollowSolver.extractTerminals(rules, this.mode, this.epsilon);
+
+						let nonTerminals = FirstFollowSolver.validateSymbols(rules, terminals, this.epsilon);
+
+						if (!this.start) {
+							this.error = "Start symbol must be entered";
+							return;
+						}
+
+						if (nonTerminals.indexOf(this.start) < 0) {
+							this.error = "Start symbol must be a non-terminal";
+							return;
+						}
+
+						if (!this.epsilon) {
+							this.error = "Epsilon symbol must be entered";
+							return;
+						}
+
+						let problem = {
+							rules: rules,
+							terminals: terminals,
+							start: this.start,
+							epsilon: this.epsilon,
+							eof: this.eof
+						};
+
+						this.terminals = terminals;
+
+						let solution = FirstFollowSolver.solve(problem);
+
+						this.firstSet = solution.firstSet;
+						this.followSet = solution.followSet;
+
+						this.firstSetToShow = prepareToShow(this.firstSet);
+						this.followSetToShow = prepareToShow(this.followSet);
+					} catch (e) {
+						if (typeof e === 'string' || e instanceof String) {
+							this.error = e;
+						} else {
+							this.error = "An unexpected error has occured. If you'd like me to help you figure out what happened email me at dusan.stanojevic.cs@gmail.com with your program/grammar";
+
+							console.error(e);
+						}
+					}
+				}
+			}
+		});
+	</script>
+
+</body>
+</html>
